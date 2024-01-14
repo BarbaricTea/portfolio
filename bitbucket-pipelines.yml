@@ -3,7 +3,7 @@ pipelines:
     master:
       - step:
           name: Build
-          image: node:12.18.0
+          image: node:latest
           caches:
             - node
           script:
@@ -17,7 +17,7 @@ pipelines:
     production: 
       - step:
           name: production
-          image: node:12.18.0
+          image: node:latest
           caches:
             - node
           script:
