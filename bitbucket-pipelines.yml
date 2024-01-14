@@ -2,17 +2,17 @@ pipelines:
   branches: # Branch-specific pipelines definitions
     master:
       - step:
-        name: Build
-        image: node:12.18.0
-        caches:
-          - node
-        script:
-          - npm install
-          - npm run build
-        artifacts:
-          # Creating artifacts which can be used in next steps
-          - .next/**
-          - node_modules/**
+          name: Build
+          image: node:12.18.0
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            # Creating artifacts which can be used in next steps
+            - .next/**
+            - node_modules/**
   custom: # Pipeline that only runs manually
     production: 
       - step:
