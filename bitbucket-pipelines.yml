@@ -6,8 +6,8 @@ pipelines:
           image: node:latest
           script:
             - npm install
-            - npm run test
-            - npm run build
+            - npm run dev test
+            - npm run dev build
   custom: # Pipeline that only runs manually
     production: 
       - step:
@@ -15,7 +15,7 @@ pipelines:
           image: node:latest
           script:
             - npm install
-            - npm run build
+            - npm run dev build
           artifacts:
             - build/**
       - step:
