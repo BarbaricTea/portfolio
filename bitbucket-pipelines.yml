@@ -16,13 +16,17 @@ pipelines:
   custom: # Pipeline that only runs manually
     production: 
       - step:
-          name: Building the app
-          image: node:latest
+          name: production
+          image: node:12.18.0
+          caches:
+            - node
           script:
             - npm install
-            - npm run dev build
+            - npm run build
           artifacts:
-            - build/**
+            # Creating artifacts which can be used in next steps
+            - .next/**
+            - node_modules/**
       - step:
           name: Deploying the app to S3
           deployment: production
