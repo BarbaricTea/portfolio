@@ -1,8 +1,9 @@
 pipelines:
   branches: # Branch-specific pipelines definitions
     master:
+      - step:
         name: Build
-        image: node:latest
+        image: node:12.18.0
         caches:
           - node
         script:
