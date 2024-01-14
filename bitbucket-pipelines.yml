@@ -2,12 +2,17 @@ pipelines:
   branches: # Branch-specific pipelines definitions
     master:
       - step:
-          name: Build and test the app
-          image: node:latest
+          name: Build static html files
+          image: node:8.9.4-slim
+          caches:
+            - node
           script:
             - npm install
-            - npm run dev test
-            - npm run dev build
+            - rm -rf .next out # Remove built directories from previous builds (prevent EEXIST error)
+            - npm run export
+            - cp public/* out
+          artifacts:
+            - out/**
   custom: # Pipeline that only runs manually
     production: 
       - step:
