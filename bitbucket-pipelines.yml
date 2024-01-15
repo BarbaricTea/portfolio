@@ -25,8 +25,7 @@ pipelines:
             - npm run build
           artifacts:
             # Creating artifacts which can be used in next steps
-            - .next/**
-            - node_modules/**
+            - build/**
       - step:
           name: Deploying the app to S3
           deployment: production
@@ -38,4 +37,6 @@ pipelines:
                 AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                 S3_BUCKET: $S3_BUCKET
                 ACL: "public-read"
-                LOCAL_PATH: "$(pwd)"
+                LOCAL_PATH: "build"
+          artifacts: 
+             - dist/**
