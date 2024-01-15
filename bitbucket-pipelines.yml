@@ -18,6 +18,7 @@ pipelines:
           artifacts:
             # Creating artifacts which can be used in next steps
             - build/**
+            - out/**
       - step:
           name: Deploying the app to S3
           deployment: production
